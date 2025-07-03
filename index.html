@@ -1,13 +1,30 @@
+<html>
+  <head>
+    <title>VidPick – Download Creative Commons Videos</title>
+  </head>
+  <body>
+    <h1>🎬 VidPick</h1>
+    <p>Paste a YouTube Creative Commons video link below:</p>
+    <input type="text" placeholder="Paste link here" id="videoLink" />
+    <button onclick="handleDownload()">Download</button>
+    <br><br>
+    <button onclick="goToPayment()">Subscribe ₹60/month</button>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VidPick</title>
-</head>
-<body>
-    <h1>Welcome to VidPick</h1>
-    <p>This is your Creative Commons video tool.</p>
-</body>
+    <script>
+      function handleDownload() {
+        const link = document.getElementById("videoLink").value;
+        if (!link.includes("youtube.com")) {
+          alert("Please paste a valid YouTube link.");
+          return;
+        }
+        // redirect or send to your backend
+        alert("Feature coming soon. Stay tuned!");
+      }
+
+      function goToPayment() {
+        // You can link to Razorpay, Instamojo, or another page
+        alert("Payment integration coming soon.");
+      }
+    </script>
+  </body>
 </html>
