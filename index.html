@@ -1,1 +1,88 @@
-restore basic page after accidental delete
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VidPick – Download Creative Commons Videos</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f4f4f4; }
+    h1 { color: #1a73e8; }
+    input, button { padding: 10px; margin: 5px 0; width: 100%; max-width: 400px; }
+    button { background: #1a73e8; color: white; border: none; cursor: pointer; }
+    button:hover { background: #1558b0; }
+  </style>
+</head>
+<body>
+  <h1>🎬 VidPick</h1>
+  <p><strong>Business Name:</strong> Pranali Abhijeet Deshmukh</p>
+
+  <h2>🔐 Login</h2>
+  <input type="text" id="phone" placeholder="Enter phone number">
+  <button onclick="login()">Login</button>
+
+  <h2>📥 Paste YouTube Creative Commons Link</h2>
+  <input type="text" id="videoLink" placeholder="Paste link here" />
+  <button onclick="downloadFull()">Download Full Video</button>
+  <button onclick="splitReels()">Split into Reels (15s/30s)</button>
+
+  <h2>💰 Subscription Plans</h2>
+  <ul>
+    <li>₹1 – Trial (1 video)</li>
+    <li>₹10 – 2-hour access</li>
+    <li>₹60 – Monthly (25GB cloud)</li>
+  </ul>
+
+  <button id="rzp-button1">Subscribe ₹60/month</button>
+
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script>
+    function login() {
+      const phone = document.getElementById("phone").value;
+      if (phone.length < 10) {
+        alert("Please enter a valid phone number");
+        return;
+      }
+      alert("Logged in with: " + phone);
+    }
+
+    function downloadFull() {
+      const link = document.getElementById("videoLink").value;
+      if (!link.includes("youtube.com")) {
+        alert("Invalid YouTube link.");
+        return;
+      }
+      const redirect = "https://yt1s.ltd/en113?q=" + encodeURIComponent(link);
+      window.open(redirect, "_blank");
+    }
+
+    function splitReels() {
+      alert("Reels splitting feature is coming soon!");
+    }
+
+    // Razorpay setup
+    var options = {
+      key: "rzp_test_yourkey", // Replace with your Razorpay Test/Live Key
+      amount: 6000, // ₹60 in paise
+      currency: "INR",
+      name: "VidPick Subscription",
+      description: "Monthly Access – 25GB Cloud",
+      handler: function (response) {
+        alert("Payment Successful. Payment ID: " + response.razorpay_payment_id);
+      },
+      prefill: {
+        name: "Your Name",
+        contact: ""
+      },
+      theme: {
+        color: "#3399cc"
+      }
+    };
+
+    var rzp1 = new Razorpay(options);
+    document.getElementById("rzp-button1").onclick = function(e){
+      rzp1.open();
+      e.preventDefault();
+    }
+  </script>
+</body>
+</html>
