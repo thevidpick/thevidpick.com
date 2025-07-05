@@ -2,86 +2,104 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VidPick – Download Creative Commons Videos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VidPick - Creative Commons Video Tool</title>
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; background: #f4f4f4; }
-    h1 { color: #1a73e8; }
-    input, button { padding: 10px; margin: 5px 0; width: 100%; max-width: 400px; }
-    button { background: #1a73e8; color: white; border: none; cursor: pointer; }
-    button:hover { background: #1558b0; }
+    body {
+      background: #1a001a;
+      color: #ffd700;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      padding: 50px 20px;
+    }
+    h1 {
+      color: #ffd700;
+      font-size: 3em;
+    }
+    h3 {
+      color: #dda0dd;
+      font-weight: 400;
+    }
+    input[type="text"] {
+      padding: 10px;
+      width: 80%;
+      max-width: 500px;
+      border-radius: 8px;
+      border: 2px solid #dda0dd;
+      font-size: 1em;
+      margin-bottom: 15px;
+    }
+    button {
+      margin: 10px 5px;
+      padding: 12px 24px;
+      font-size: 1em;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .download-btn {
+      background-color: #ffd700;
+      color: #1a001a;
+    }
+    .reel-btn {
+      background-color: #dda0dd;
+      color: #1a001a;
+    }
+    .plan-box {
+      margin-top: 30px;
+    }
+    .plan {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 20px;
+      background-color: #290029;
+      border: 2px solid #ffd700;
+      color: #ffd700;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .plan:hover {
+      background-color: #3a003a;
+    }
+    .note {
+      margin-top: 20px;
+      font-size: 0.9em;
+      color: #ccc;
+    }
   </style>
 </head>
 <body>
-  <h1>🎬 VidPick</h1>
-  <p><strong>Business Name:</strong> Pranali Abhijeet Deshmukh</p>
+  <h1>VidPick</h1>
+  <h3>Download Creative Commons YouTube Videos</h3>
 
-  <h2>🔐 Login</h2>
-  <input type="text" id="phone" placeholder="Enter phone number">
-  <button onclick="login()">Login</button>
+  <input type="text" id="youtubeLink" placeholder="Paste YouTube link here" />
+  <br />
 
-  <h2>📥 Paste YouTube Creative Commons Link</h2>
-  <input type="text" id="videoLink" placeholder="Paste link here" />
-  <button onclick="downloadFull()">Download Full Video</button>
-  <button onclick="splitReels()">Split into Reels (15s/30s)</button>
+  <button class="download-btn" onclick="downloadVideo()">Download Full Video</button>
+  <button class="reel-btn" onclick="splitIntoReels()">Split into Reels</button>
 
-  <h2>💰 Subscription Plans</h2>
-  <ul>
-    <li>₹1 – Trial (1 video)</li>
-    <li>₹10 – 2-hour access</li>
-    <li>₹60 – Monthly (25GB cloud)</li>
-  </ul>
+  <div class="plan-box">
+    <h3>Choose a Plan</h3>
+    <div class="plan" onclick="alert('₹1 Trial Activated!')">₹1 Trial</div>
+    <div class="plan" onclick="alert('₹10 plan activated for 2 hours')">₹10 / 2 Hours</div>
+    <div class="plan" onclick="alert('Subscribed to ₹60 monthly plan')">₹60 / Month</div>
+  </div>
 
-  <button id="rzp-button1">Subscribe ₹60/month</button>
+  <p class="note">Only works with Creative Commons licensed YouTube videos.</p>
 
-  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
   <script>
-    function login() {
-      const phone = document.getElementById("phone").value;
-      if (phone.length < 10) {
-        alert("Please enter a valid phone number");
+    function downloadVideo() {
+      const link = document.getElementById("youtubeLink").value;
+      if (!link.includes("youtube.com") && !link.includes("youtu.be")) {
+        alert("Invalid YouTube link!");
         return;
       }
-      alert("Logged in with: " + phone);
+      alert("Download feature will be available in next update!");
     }
 
-    function downloadFull() {
-      const link = document.getElementById("videoLink").value;
-      if (!link.includes("youtube.com")) {
-        alert("Invalid YouTube link.");
-        return;
-      }
-      const redirect = "https://yt1s.ltd/en113?q=" + encodeURIComponent(link);
-      window.open(redirect, "_blank");
-    }
-
-    function splitReels() {
-      alert("Reels splitting feature is coming soon!");
-    }
-
-    // Razorpay setup
-    var options = {
-      key: "rzp_test_yourkey", // Replace with your Razorpay Test/Live Key
-      amount: 6000, // ₹60 in paise
-      currency: "INR",
-      name: "VidPick Subscription",
-      description: "Monthly Access – 25GB Cloud",
-      handler: function (response) {
-        alert("Payment Successful. Payment ID: " + response.razorpay_payment_id);
-      },
-      prefill: {
-        name: "Your Name",
-        contact: ""
-      },
-      theme: {
-        color: "#3399cc"
-      }
-    };
-
-    var rzp1 = new Razorpay(options);
-    document.getElementById("rzp-button1").onclick = function(e){
-      rzp1.open();
-      e.preventDefault();
+    function splitIntoReels() {
+      alert("Split into Reels feature is coming soon!");
     }
   </script>
 </body>
