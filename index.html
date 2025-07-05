@@ -1,106 +1,187 @@
-<!DOCTYPE html>
+[4:42 PM, 7/5/2025] PD: <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>VidPick - Creative Commons Video Tool</title>
+  <title>VidPick - Download Creative Commons Videos</title>
   <style>
     body {
-      background: #1a001a;
-      color: #ffd700;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f2eafa;
+      color: #3e065f;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    header {
       text-align: center;
-      padding: 50px 20px;
+      margin-bottom: 2rem;
     }
+
     h1 {
-      color: #ffd700;
-      font-size: 3em;
+      font-size: 2.5rem;
+      color: #8e44ad;
     }
-    h3 {
-      color: #dda0dd;
-      font-weight: 400;
+
+    p {
+      font-size: 1rem;
+      max-width: 600px;
     }
+
     input[type="text"] {
-      padding: 10px;
-      width: 80%;
+      padding: 0.8rem;
+      width: 100%;
       max-width: 500px;
-      border-radius: 8px;
-      border: 2px solid #dda0dd;
-      font-size: 1em;
-      margin-bottom: 15px;
+      border: 2px solid #a569bd;
+      border-radius: 12px;
+      margin-top: 1rem;
+      font-size: 1rem;
     }
+
+    .buttons {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
     button {
-      margin: 10px 5px;
-      padding: 12px 24px;
-      font-size: 1em;
+      background-color: gold;
+      color: #3e065f;
       border: none;
-      border-radius: 8px;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 20px;
       cursor: pointer;
-      transition: all 0.3s;
+      transition: background 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     }
-    .download-btn {
+
+    button:hover {
       background-color: #ffd700;
-      color: #1a001a;
     }
-    .reel-btn {
-      background-color: #dda0dd;
-      color: #1a001a;
-    }
-    .plan-box {
-      margin-top: 30px;
-    }
-    .plan {
-      display: inline-block;
-      margin: 10px;
-      padding: 10px 20px;
-      background-color: #290029;
-      border: 2px solid #ffd700;
-      color: #ffd700;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-    .plan:hover {
-      background-color: #3a003a;
-    }
-    .note {
-      margin-top: 20px;
-      font-size: 0.9em;
-      color: #ccc;
+
+    footer {
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #6c3483;
     }
   </style>
 </head>
 <body>
-  <h1>VidPick</h1>
-  <h3>Download Creative Commons YouTube Videos</h3>
+  <header>
+    <h1>VidPick</h1>
+    <p>Paste a YouTube Creative Commons link below to download videos — full or split into Reels.</p>
+  </header>
 
-  <input type="text" id="youtubeLink" placeholder="Paste YouTube link here" />
-  <br />
+  <input type="text" placeholder="Paste YouTube link here..." />
 
-  <button class="download-btn" onclick="downloadVideo()">Download Full Video</button>
-  <button class="reel-btn" onclick="splitIntoReels()">Split into Reels</button>
-
-  <div class="plan-box">
-    <h3>Choose a Plan</h3>
-    <div class="plan" onclick="alert('₹1 Trial Activated!')">₹1 Trial</div>
-    <div class="plan" onclick="alert('₹10 plan activated for 2 hours')">₹10 / 2 Hours</div>
-    <div class="plan" onclick="alert('Subscribed to ₹60 monthly plan')">₹60 / Month</div>
+  <div class="buttons">
+    <button>Download Full Video</button>
+    <button>Download as Reels</button>
   </div>
 
-  <p class="note">Only works with Creative Commons licensed YouTube videos.</p>
-
-  <script>
-    function downloadVideo() {
-      const link = document.getElementById("youtubeLink").value;
-      if (!link.includes("youtube.com") && !link.includes("youtu.be")) {
-        alert("Invalid YouTube link!");
-        return;
-      }
-      Removed update message and alert popup
+  <footer>
+    <p>Made with ❤️ for creators. Powered by VidPick.</p>
+  </footer>
+</body>
+</html>
+[4:56 PM, 7/5/2025] PD: Removed “download in next update” placeholder and updated homepage UI
+[5:22 PM, 7/5/2025] PD: <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VidPick - Download Creative Commons Videos</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f2eafa;
+      color: #3e065f;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
     }
 
-    function splitIntoReels() {
-      alert("Split into Reels feature is coming soon!");
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
     }
-  </script>
+
+    h1 {
+      font-size: 2.5rem;
+      color: #8e44ad;
+    }
+
+    p {
+      font-size: 1rem;
+      max-width: 600px;
+    }
+
+    input[type="text"] {
+      padding: 0.8rem;
+      width: 100%;
+      max-width: 500px;
+      border: 2px solid #a569bd;
+      border-radius: 12px;
+      margin-top: 1rem;
+      font-size: 1rem;
+    }
+
+    .buttons {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    button {
+      background-color: gold;
+      color: #3e065f;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    button:hover {
+      background-color: #ffd700;
+    }
+
+    footer {
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #6c3483;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>VidPick</h1>
+    <p>Paste a YouTube Creative Commons link below to download videos — full or split into Reels.</p>
+  </header>
+
+  <input type="text" placeholder="Paste YouTube link here..." />
+
+  <div class="buttons">
+    <button>Download Full Video</button>
+    <button>Download as Reels</button>
+  </div>
+
+  <footer>
+    <p>Made with ❤️ for creators. Powered by VidPick.</p>
+  </footer>
 </body>
 </html>
