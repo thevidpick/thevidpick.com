@@ -184,7 +184,24 @@
       const mailtoLink = mailto:vidpickcinemax@gmail.com?subject=Contact from ${encodeURIComponent(name)}&body=Email: ${encodeURIComponent(email)}%0D%0A%0D%0A${encodeURIComponent(message)};
       window.location.href = mailtoLink;
     }
-  </script>
 
+    <script>
+  function handleDownload(type) {
+    const url = document.getElementById('videoUrl').value.trim();
+    if (!url) {
+      alert('Please paste a YouTube video link first.');
+      return;
+    }
+    alert(Starting download of ${type} for URL: ${url});
+  }
+
+  function login() {
+    alert('Login clicked — add your phone login flow here.');
+  }
+
+  function pay(amount) {
+    alert(Pay ₹${amount} clicked — integrate payment gateway here.);
+  }
+</script>
 </body>
 </html>
