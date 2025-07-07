@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TheVidPick - Download Creative Commons Videos</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #2e004f;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: gold;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.1em;
+      color: #f3eaff;
+      margin-bottom: 30px;
+      text-align: center;
+      max-width: 600px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 90%;
+      max-width: 500px;
+      padding: 12px;
+      font-size: 1em;
+      border: none;
+      border-radius: 8px;
+      margin: 10px 0;
+    }
+
+    .button {
+      background-color: gold;
+      color: #2e004f;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1em;
+      border-radius: 25px;
+      margin: 10px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #ffd700;
+    }
+
+    footer {
+      margin-top: 60px;
+      padding-top: 30px;
+      border-top: 1px solid #444;
+      width: 100%;
+      max-width: 800px;
+      font-size: 0.9em;
+    }
+
+    footer h3 {
+      color: gold;
+    }
+
+    footer section {
+      margin-bottom: 20px;
+    }
+
+    a {
+      color: gold;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    section {
+      max-width: 600px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>TheVidPick</h1>
+  <p>Download Creative Commons YouTube videos as Reels or Full Videos. Simple. Fast. Legal.</p>
+
+  <input type="text" id="videoUrl" placeholder="Paste YouTube Link Here" />
+
+  <div>
+    <button class="button" onclick="handleDownload('reel')">Download Reel</button>
+    <button class="button" onclick="handleDownload('full')">Download Full Video</button>
+    <button class="button" onclick="login()">Login with Phone Number</button>
+  </div>
+
+  <div>
+    <button class="button" onclick="pay(1)">Pay ₹1 Trial</button>
+    <button class="button" onclick="pay(10)">Pay ₹10 - 2 Hour Access</button>
+    <button class="button" onclick="pay(60)">Pay ₹60 Monthly</button>
+  </div>
+
+  <section style="margin-top: 50px;">
+    <h2 style="color: gold;">📬 Contact Us</h2>
+    <p>If you have any questions or feedback, feel free to reach out!</p>
+    <form onsubmit="sendEmail(event)">
+      <input type="text" id="name" placeholder="Your Name" required />
+      <input type="email" id="email" placeholder="Your Email" required />
+      <textarea id="message" placeholder="Your Message" required></textarea>
+      <br />
+      <button class="button" type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <section>
+      <h3>Contact</h3>
+      <p>Email us at: <a href="mailto:vidpickcinemax@gmail.com">vidpickcinemax@gmail.com</a></p>
+    </section>
+
+    <section>
+      <h3>Shipping Policy</h3>
+      <p>This is a digital product. No physical shipping is required or provided.</p>
+    </section>
+
+    <section>
+      <h3>Refund Policy</h3>
+      <p>All purchases are final. No refunds will be issued under any circumstances.</p>
+    </section>
+
+    <section>
+      <h3>Terms of Use</h3>
+      <p>By using this website, you agree to use only Creative Commons-licensed content legally. Misuse may result in access being revoked.</p>
+    </section>
+
+    <section>
+      <h3>Privacy Policy</h3>
+      <p>Your information is secure with us. We do not share personal data with third parties. Payments are handled securely by Razorpay.</p>
+    </section>
+  </footer>
+
+  <script>
+    function handleDownload(type) {
+      const input = document.getElementById('videoUrl');
+      const url = input.value.trim();
+
+      if (!url.includes("youtube.com") && !url.includes("youtu.be")) {
+        alert("❌ Please enter a valid YouTube link.");
+        return;
+      }
+
+      if (type === 'reel') {
+        // TODO: Replace with real reel download call
+        window.open("https://your-reel-download-link.com?url=" + encodeURIComponent(url), "_blank");
+      } else if (type === 'full') {
+        // TODO: Replace with real full video download call
+        window.open("https://your-full-download-link.com?url=" + encodeURIComponent(url), "_blank");
+      }
+    }
+
+    function pay(plan) {
+      // TODO: Connect to Razorpay or payment backend
+      alert("Redirecting to secure payment gateway for ₹" + plan + "...");
+      // Example: window.location.href = "https://payment.vidpick.in/pay?plan=" + plan;
+    }
+
+    function login() {
+      // TODO: Connect to Firebase/OTP service
+      alert("Login system launching soon. Please wait...");
+    }
+
+    function sendEmail(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      const mailtoLink = mailto:vidpickcinemax@gmail.com?subject=Contact from ${encodeURIComponent(name)}&body=Email: ${encodeURIComponent(email)}%0D%0A%0D%0A${encodeURIComponent(message)};
+      window.location.href = mailtoLink;
+    }
+  </script>
+
+</body>
+</html>
