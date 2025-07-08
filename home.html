@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VidPick – Home</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #4a148c, #ffb300);
+      color: white;
+      text-align: center;
+      padding: 30px;
+    }
+    input, button {
+      margin: 10px;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+    }
+    input[type="text"], input[type="email"] {
+      width: 60%;
+    }
+    button {
+      background-color: #ffd54f;
+      color: black;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #ffca28;
+    }
+    .section {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎬 VidPick – Paste YouTube Link to Download</h1>
+
+  <div class="section">
+    <h2>🔐 Login</h2>
+    <input type="email" id="email" placeholder="Enter your email to login" />
+    <button onclick="login()">Login</button>
+    <p id="loginStatus"></p>
+  </div>
+
+  <div class="section">
+    <h2>📥 Download Video</h2>
+    <input type="text" id="videoUrl" placeholder="Paste YouTube Link Here" />
+    <button onclick="downloadReel()">Download Reel</button>
+    <button onclick="downloadFull()">Download Full Video</button>
+    <p id="downloadStatus"></p>
+  </div>
+
+  <div class="section">
+    <h2>💳 Payment Options</h2>
+    <button onclick="payTrial()">₹1 Trial</button>
+    <button onclick="payShort()">₹10 for 2 hours</button>
+    <button onclick="payMonthly()">₹60 Monthly</button>
+    <p id="paymentStatus"></p>
+  </div>
+
+  <script>
+    function login() {
+      const email = document.getElementById("email").value;
+      if (email.includes("@")) {
+        document.getElementById("loginStatus").innerText = "✅ Logged in as " + email;
+      } else {
+        document.getElementById("loginStatus").innerText = "❌ Enter a valid email address.";
+      }
+    }
+
+    function downloadReel() {
+      const url = document.getElementById("videoUrl").value;
+      if (url.includes("youtube.com") || url.includes("youtu.be")) {
+        document.getElementById("downloadStatus").innerText = "⏳ Processing Reel Download...";
+        // TODO: Insert real API call here
+      } else {
+        document.getElementById("downloadStatus").innerText = "❌ Please paste a valid YouTube link.";
+      }
+    }
+
+    function downloadFull() {
+      const url = document.getElementById("videoUrl").value;
+      if (url.includes("youtube.com") || url.includes("youtu.be")) {
+        document.getElementById("downloadStatus").innerText = "⏳ Processing Full Video Download...";
+        // TODO: Insert real API call here
+      } else {
+        document.getElementById("downloadStatus").innerText = "❌ Please paste a valid YouTube link.";
+      }
+    }
+
+    function payTrial() {
+      document.getElementById("paymentStatus").innerText = "Redirecting to ₹1 trial payment...";
+      // TODO: Integrate Razorpay or payment gateway
+    }
+
+    function payShort() {
+      document.getElementById("paymentStatus").innerText = "Redirecting to ₹10 payment page...";
+      // TODO: Integrate Razorpay or payment gateway
+    }
+
+    function payMonthly() {
+      document.getElementById("paymentStatus").innerText = "Redirecting to ₹60 monthly payment page...";
+      // TODO: Integrate Razorpay or payment gateway
+    }
+  </script>
+
+</body>
+</html>
