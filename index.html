@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VidPick - Reel & Video Downloader</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>VidPick</h1>
+    <p>Paste a YouTube Creative Commons video link</p>
+
+    <input type="text" id="videoLink" placeholder="Paste link here" />
+    
+    <div class="buttons">
+      <button onclick="downloadReel()">Download Reel</button>
+      <button onclick="downloadFull()">Download Full Video</button>
+    </div>
+
+    <p id="status"></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
