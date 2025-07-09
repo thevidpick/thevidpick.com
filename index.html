@@ -1,26 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>VidPick - Reel & Video Downloader</title>
-  <link rel="stylesheet" href="style.css">
+  <title>VidPick – Download Videos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+      background-color: #fef6ff;
+    }
+    h1 {
+      color: #8e44ad;
+    }
+    input {
+      width: 80%;
+      padding: 12px;
+      margin: 20px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 12px 24px;
+      margin: 10px;
+      font-size: 16px;
+      background-color: #9b59b6;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #8e44ad;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>VidPick</h1>
-    <p>Paste a YouTube Creative Commons video link</p>
+  <h1>🎥 VidPick Video Downloader</h1>
+  <input type="text" id="videoLink" placeholder="Paste YouTube video link here" />
+  <br>
+  <button onclick="downloadReel()">Download Reel</button>
+  <button onclick="downloadFull()">Download Full Video</button>
 
-    <input type="text" id="videoLink" placeholder="Paste link here" />
-    
-    <div class="buttons">
-      <button onclick="downloadReel()">Download Reel</button>
-      <button onclick="downloadFull()">Download Full Video</button>
-    </div>
+  <p id="status"></p>
 
-    <p id="status"></p>
-  </div>
-
-  <script src="script.js"></script>
-</body>
-</html>
+  <script>
+    function downloadReel() {
+      const link = document.getElementById('videoLink').value;
+      if (!link) {
+        document.getElementById('status').innerText = "❗ Please paste a video link first.";
+        return;
+      }
+      document.getElementById('status').innerText = "🎬 Downloading Reel (short version
